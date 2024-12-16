@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ponto - Comunidade Roblox</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sniglet&family=Luckiest+Guy&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sniglet&family=Luckiest+Guy&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos Gerais */
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #2b2b2b;
+            color: #FFF;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            opacity: 0;
+            animation: fadeIn 1.5s ease-in-out forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Header */
+        header {
+            background-color: #2b2b2b;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            position: relative;
+        }
+
+        .logo {
+            max-width: 100px;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 25px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 100%;
+            height: 3px;
+            background-color: white;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            background-color: #333;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            padding: 10px 0;
+            z-index: 999;
+        }
+
+        .mobile-menu a {
+            color: white;
+            text-decoration: none;
+            margin: 10px 0;
+            font-size: 18px;
+        }
+
+        .mobile-menu.open {
+            display: flex;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+        }
+
+        /* Seções */
+        section {
+            padding: 20px;
+            text-align: center;
+            flex: 1;
+        }
+
+        /* Cards */
+        .cards-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 60px;
+        }
+
+        .card {
+            background-color: #1c1c1c;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            width: 250px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+        }
+
+        .card:hover img {
+            transform: rotate(10deg) scale(1.1);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .card img {
+            width: 50px;
+            margin-bottom: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            margin: 0;
+        }
+
+        .card p {
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+
+        @media (max-width: 768px) {
+            .cards-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .card {
+                width: 90%;
+                max-width: 300px;
+            }
+        }
+
+        /* Discord Section */
+        .discord-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 40px;
+        }
+
+        .discord-logo {
+            width: 100px;
+            margin-right: 15px;
+            transition: transform 0.3s, filter 0.3s;
+            cursor: pointer;
+        }
+
+        .discord-logo:hover {
+            transform: scale(1.2);
+            filter: drop-shadow(0 0 15px #7289DA);
+        }
+
+        .discord-text {
+            font-size: 1.5rem;
+            font-family: 'Luckiest Guy', cursive;
+            color: #7289DA;
+            text-shadow: 0 0 10px #7289DA;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #000;
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+            font-size: 14px;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .footer-divider {
+            width: 10%;
+            border: 0;
+            height: 1px;
+            background: #000;
+            margin: 0px;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 18px;
+        }
+
+        .social-icons img {
+            width: 30px;
+            margin: 0 5px;
+        }
+
+        /* Cookie Banner */
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            width: 99%;
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .cookie-banner button {
+            background-color: #7289DA;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .cookie-banner button:hover {
+            background-color: #5a6fb0;
+        }
+
+        .cookie-banner.hidden {
+            display: none;
+        }
+
+        h1 {
+            font-size: 25px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <img src="assets/logo_nobackground.png" alt="Logo Ponto" class="logo">
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="pontocast.html">PontoCast</a>
+        </nav>
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="index.html">Home</a>
+            <a href="pontocast.html">PontoCast</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="about">
+        <h1>Bem-vindo à<br>Comunidade Ponto</h1>
+        <p>Sua melhor comunidade de Roblox com<br>itens exclusivos e Podcast!</p>
+        <div class="cards-container">
+            <div class="card">
+                <span class="material-icons">group</span>
+                <h3>Comunidade</h3>
+                <p>Explore nossa comunidade Roblox.</p>
+            </div>
+            <div class="card">
+                <span class="material-icons">code</span>
+                <h3>Desenvolvimento</h3>
+                <p>Aprenda a desenvolver no Roblox.</p>
+            </div>
+            <div class="card">
+                <span class="material-icons">rocket_launch</span>
+                <h3>Crescimento</h3>
+                <p>Amplie suas habilidades</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre Section -->
+    <section class="about">
+        <h2>Sobre a Comunidade Ponto</h2>
+        <p>A comunidade <strong>Ponto</strong> foi criada para unir<br> jogadores de Roblox com objetivos<br> de entretenimento e vendas de itens</p>
+        <div class="discord-section">
+            <a href="https://discord.gg/pontoroblox" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/98/Discord_logo.svg" alt="Discord Logo" class="discord-logo">
+            </a>
+        </div>
+    </section>
+    <section class="about">
+
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <img src="assets/logo_nobackground.png" alt="Logo Ponto" class="logo">
+            <div class="social-icons">
+                <a href="https://www.youtube.com/channel/UCTAZh9KSJLgob8E1MK1tqEA" target="_blank">
+                    <img src="assets/youtube.png" alt="YouTube">
+                </a>
+                <a href="https://www.tiktok.com/@.yocat" target="_blank">
+                    <img src="assets/tiktok.png" alt="TikTok">
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cookie Banner -->
+    <div class="cookie-banner" id="cookieBanner">
+        <span>Utilizamos cookies para melhorar sua experiência. Saiba mais em nossa <a href="#" style="color: #7289DA;">Política de Cookies</a>.</span>
+        <button onclick="acceptCookies()">Aceitar</button>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        hamburger.addEventListener('click', () => {
+            mobileMenu.classList.toggle('open');
+        });
+
+        function acceptCookies() {
+            document.getElementById('cookieBanner').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
